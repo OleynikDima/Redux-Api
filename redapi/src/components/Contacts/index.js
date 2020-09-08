@@ -7,7 +7,9 @@ import popItem from './transition/pop.module.css'
 
 // add redux connect 
 import {connect} from 'react-redux'
-import taskAction from '../redux/taskAction'
+// import taskAction from '../redux/taskAction'
+import taskOperation from '../redux/taskOperation'
+
 
 // func create list item 
 
@@ -51,6 +53,7 @@ Contacts.PropsTypes = {
 const mapStateToProps = (state) => {
     const {items, filter} = state.contacts;
 // search similar name
+console.log(items);
     const visibleContacts = items.filter(contack => contack.text.toLowerCase()
     .includes(filter.toLowerCase()))  
     return {
@@ -59,7 +62,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    onDelete:taskAction.onRemoveItem
+    onDelete:taskOperation.removeItem
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contacts);

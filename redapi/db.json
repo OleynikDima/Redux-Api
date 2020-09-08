@@ -14,6 +14,26 @@
     }
   ],
   "profile": {
-    "name": "typicode"
-  }
+    "text": {
+      "text": "qwe",
+      "number": "123"
+    }
+  },
+  "contacts": [
+    {
+      "text": "maman",
+      "number": "234-45-65",
+      "id": 2
+    },
+    {
+      "text": "sadqw",
+      "number": "wqe",
+      "id": 3
+    },
+    {
+      "text": "dima",
+      "number": "",
+      "id": 4
+    }
+  ]
 }

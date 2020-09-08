@@ -5,7 +5,8 @@ import './transition/animation.css'
 import redAlert from './transition/alert.module.css'
 import MessageRed from './alert.js'
 
-import taskAction from '../redux/taskAction'
+// import taskAction from '../redux/taskAction'
+import taskOperation from '../redux/taskOperation'
 import {connect} from 'react-redux'
 
 
@@ -35,7 +36,8 @@ class Form extends Component {
        const {text,number} = this.state
 
               //check for similar name
-        const contacts = this.props.state
+        const contacts = this.props.state.items
+
         const filterName = contacts.map(user => user.text)
          
         if(filterName.includes(text)){
@@ -108,14 +110,14 @@ render(){
 
 const mapStateToProps = state => {
       return {
-        state:state.contacts.items,  
+        state:state.contacts,  
     }
 }
 
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddText:(text,number) => dispatch(taskAction.newObj(text,number)),
+        onAddText:(text,number) => dispatch(taskOperation.addTask(text,number)),
     }
 }
 

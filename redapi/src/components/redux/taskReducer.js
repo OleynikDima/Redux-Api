@@ -5,20 +5,21 @@ import {createReducer} from '@reduxjs/toolkit'
 import users from '../users'
 
 
-const newObj = (state, action) => {
-    return [...state, action.payload.contacts]
+const newItemObj = (state, action) => {
+    return [...state, action.payload]
 }
 const onRemoveItem = (state, action) => {
-    return state.filter(contact => contact.id !== action.payload)
+    return state.filter(contact => contact.id !== action.payload);
 }
 const changeFilter = (state,action) => {
     return action.payload;
 }
 
 
-const items = createReducer(users,{
-    [taskAction.newObj]: newObj,
-    [taskAction.onRemoveItem]: onRemoveItem,
+const items = createReducer([],{
+    [taskAction.fetchItemSuccess]:(state,action) => action.payload,
+    [taskAction.addItemSuccess]: newItemObj,
+    [taskAction.removeItemSuccess]: onRemoveItem,
 });
 
 const filter = createReducer('', {
@@ -26,8 +27,23 @@ const filter = createReducer('', {
 });
 
 
+const loading = createReducer(false ,{
+    [taskAction.removeItemRequest]:()=> true,
+    [taskAction.removeItemSuccess]:()=> false,
+    [taskAction.removeItemError]:()=> false,
+
+    [taskAction.fetchItemRequest]:()=> true,
+    [taskAction.fetchItemSuccess]:()=> false,
+    [taskAction.fetchItemError]:()=> false,
+
+    [taskAction.addItemRequest]:()=> true,
+    [taskAction.addItemSuccess]:()=> false,
+    [taskAction.addItemError]:()=> false,
+})
+
 
 export default combineReducers({
+    loading,
     items,
     filter,
 })
