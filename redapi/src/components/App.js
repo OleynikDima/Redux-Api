@@ -4,6 +4,9 @@ import ContactsList from './Contacts';
 import ContactFilter from './Contacts/ContactFilter';
 import {connect} from 'react-redux';
 import tasksOperation from './redux/taskOperation'
+import selectors from './redux/selectors'
+
+
 
 class App extends Component{
     componentDidMount(){
@@ -13,7 +16,6 @@ class App extends Component{
         return (
             <>
                 <Form />
-                {this.props.isLoadingContacts && <h2>loading contacts...</h2>}
                 {this.props.contacts.length > 1 && 
                     <ContactFilter /> 
                 }       
@@ -25,8 +27,7 @@ class App extends Component{
 
 
 const mapStateToProps = state => ({
-        isLoadingContacts:state.contacts.loading,
-        contacts:state.contacts.items,
+        contacts:selectors.getContactsItems(state)
 })
 
 const mapDispatchProps = {

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import PropsTypes from 'prop-types';
 import style from './Contact.module.css'
@@ -9,11 +10,13 @@ import popItem from './transition/pop.module.css'
 import {connect} from 'react-redux'
 // import taskAction from '../redux/taskAction'
 import taskOperation from '../redux/taskOperation'
+import selector  from '../redux/selectors'
 
 
 // func create list item 
 
 const Contacts = ({contacts, onDelete}) => {
+    console.log(contacts);
     return (
     <div className={style.box_contact}>
         <TransitionGroup component='ul'className={style.list} >
@@ -50,16 +53,9 @@ Contacts.PropsTypes = {
 }
 
 
-const mapStateToProps = (state) => {
-    const {items, filter} = state.contacts;
-// search similar name
-console.log(items);
-    const visibleContacts = items.filter(contack => contack.text.toLowerCase()
-    .includes(filter.toLowerCase()))  
-    return {
-        contacts: visibleContacts
-    }
-};
+const mapStateToProps = (state) => ({ 
+    contacts:selector.getVisibleContacts(state)
+});
 
 const mapDispatchToProps = {
     onDelete:taskOperation.removeItem

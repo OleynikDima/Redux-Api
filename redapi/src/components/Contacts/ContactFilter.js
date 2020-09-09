@@ -6,6 +6,9 @@ import filterStyle from './transition/filter.module.css';
 
 import {connect} from 'react-redux'
 import taskAction from '../redux/taskAction'
+import selection from  '../redux/selectors'
+
+
 //Filter input for Contacts 
 function ContactFilter ({value,onChangeFilter}){
     return (
@@ -27,7 +30,7 @@ function ContactFilter ({value,onChangeFilter}){
 
 
 const mapStateToProps = state => ({
-    value:state.contacts.filter
+    value:selection.getFilter(state)
 })
 
 const mapDispatchToProps = {

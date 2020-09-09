@@ -4,15 +4,15 @@ import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
 
 
 
-const defaultMiddleware = getDefaultMiddleware();
+// const defaultMiddleware = getDefaultMiddleware();
 
-const loggerMiddleware = store => next => action => {
-        console.group(action.type);
-        console.info('dispatch' , action);
-        console.groupEnd(action.type);
+// const loggerMiddleware = store => next => action => {
+//         console.group(action.type);
+//         console.info('dispatch' , action);
+//         console.groupEnd(action.type);
 
-        next(action)
-};
+//         next(action)
+// };
 
 
 
@@ -20,7 +20,7 @@ const store = configureStore({
         reducer:{     
            contacts:taskReducer,
         },
-        middleware:[ ...defaultMiddleware,loggerMiddleware],
+        // middleware:[ ...defaultMiddleware,loggerMiddleware],
 });
 
 export default store;

@@ -21,19 +21,14 @@
   },
   "contacts": [
     {
-      "text": "maman",
-      "number": "234-45-65",
+      "text": "Dima",
+      "number": "123-45-67",
+      "id": 1
+    },
+    {
+      "text": "Raisa",
+      "number": "098-54-34",
       "id": 2
-    },
-    {
-      "text": "sadqw",
-      "number": "wqe",
-      "id": 3
-    },
-    {
-      "text": "dima",
-      "number": "",
-      "id": 4
     }
   ]
 }

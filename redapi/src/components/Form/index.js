@@ -8,7 +8,7 @@ import MessageRed from './alert.js'
 // import taskAction from '../redux/taskAction'
 import taskOperation from '../redux/taskOperation'
 import {connect} from 'react-redux'
-
+import selectors from '../redux/selectors'
 
 
 class Form extends Component {
@@ -98,7 +98,8 @@ render(){
             type="submit"
             disabled={!this.state.text}
             >
-                Add contact 
+                { this.props.isLoadingBtn === true ? `Loading ` : `Add contact`
+                } 
          </button>
     </form>   
     </div>
@@ -110,7 +111,8 @@ render(){
 
 const mapStateToProps = state => {
       return {
-        state:state.contacts,  
+        isLoadingBtn:selectors.getIsLoadingBtn(state),
+        state:selectors.getContacts(state),
     }
 }
 
